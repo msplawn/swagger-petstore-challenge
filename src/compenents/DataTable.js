@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import DataBody from "./DataBody";
 
-function DataTable({ headings, pets, iconStatus }) {
-    console.log({iconStatus})
+//Creating DataTable and passing necessary paramaters
+function DataTable({ headings, pets, status, iconStatus }) {
     return (
         // <div className="datatable">
             <table className="ui celled table">
                 <thead>
                     <tr>
+                        {/* Creating a row with heading names and specified widths */}
                         {headings.map(({name, width}) => {
                             return (
                                 <th 
@@ -21,7 +22,7 @@ function DataTable({ headings, pets, iconStatus }) {
                         })}
                     </tr>
                 </thead>
-                <DataBody key={pets} pets={pets} value={iconStatus}/>
+                <DataBody key={pets} pets={pets} data={status} value={iconStatus}/>
             </table>
         // </div>
     );
