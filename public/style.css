@@ -1,0 +1,24 @@
+.header {
+    text-align: center;
+}
+
+.pets-header {
+    text-align: center;
+}
+
+tr {
+    /* display: flex !important;
+    flex-direction: row !important;
+    text-align: center;
+    justify-content: space-between; */
+    text-align: center;
+}
+
+/* .datatable {
+    display: flex;
+    flex-direction: row;
+} */
+
+/* table {
+    width: 100% !important;
+} */
