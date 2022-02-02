@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import DataHeader from "../compenents/DataHeader";
 import DataTable from "../compenents/DataTable";
-import Pages from "../compenents/Pages";
 import API from "../utils/API";
 
 export default class DataArea extends Component {

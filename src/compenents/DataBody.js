@@ -6,7 +6,6 @@ import API from "../utils/API";
 function DataBody({ pets, value, data }) {
     console.log(data)
     const [className, setClassName] = useState(value);
-    const [id, setId] = useState(0);
     const [availability, setAvailability] = useState(data);
     const [activePage, setActivePage] = useState(1);
     const [page, setPage] = useState(1)
@@ -26,16 +25,11 @@ function DataBody({ pets, value, data }) {
         // console.log(this)
         className === "question circle outline icon" ? console.log("yeeeet") : console.log("nahhhhh")
         console.log(i)
-        // console.log(document.getele(`${i}`))
-        // setStatus("check circle icon")
-        // this.setState({status: "check circle icon"})
         value = "check circle icon"
         const icon = document.getElementById(`${i}`)
         icon.setAttribute("class", value)
         const availabilityValue = "Sold!"
         icon.textContent = `${availabilityValue}`
-        // setClassName((value))
-        // document.querySelector(`.${i}`).textContent = availabilityValue
     }
 
     const onChange = async (e, pageInfo) => {
@@ -76,9 +70,6 @@ function DataBody({ pets, value, data }) {
                     //     name === "mouse"
                     // )
                     .map(({ name, status }, i) => {
-                        // const image = API.getCatImages().then(result => {
-                        //     return result.data[0].url;
-                        // })
                         const dataVar = activePage * 10;
                         console.log(dataVar)
                         console.log(pets.length)
@@ -95,13 +86,10 @@ function DataBody({ pets, value, data }) {
                                         </i>
                                     </td>
                                 </tr>
-
                             )
                         }
                     })}
             </tbody>
-            {/* <Pages className="pages" page={page} onPageChange={handlePaginationChange}>
-            </Pages> */}
             <div className="ui one column stackable center aligned page grid middle aligned pages">
                 <Pagination className="ui center" activePage={activePage} totalPages={getPages(pets)} onPageChange={onChange}/>
             </div>
