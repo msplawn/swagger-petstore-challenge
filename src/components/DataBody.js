@@ -45,8 +45,8 @@ function DataBody({ pets, value }) {
                                     <td key={pet.name}>{pet.name}</td>
                                     <td>
                                         {pet.status === "available" ? 
-                                        <i id={pet.id} key={i} ref={idRef} className={className} onClick={() => handleClick(pet, i)}>
-                                            {pet.status}
+                                        <i id={pet.id} key={i} ref={idRef} onClick={() => handleClick(pet, i)}>
+                                            <div className="status">{pet.status}</div>
                                         </i>
                                         :
                                         <i>{pet.status}</i>
