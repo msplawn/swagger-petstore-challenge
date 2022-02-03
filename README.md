@@ -1,4 +1,4 @@
-# **Swagger Petstore Challenge**                 [![License](https://img.shields.io/badge/License--blue.svg)](https://opensource.org/licenses/)
+# **Swagger Petstore Challenge**                 
 
   # Project Description
   Swagger Petstore is an application built using React and the Swagger Petstore API to display a list of pets, their IDs, and their availability status. Users can change the availability status of a pet with the click of a button as well as display only pets that are available or pets that are already sold.
