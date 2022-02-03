@@ -1,19 +1,16 @@
 .header {
     text-align: center;
-    justify-content: center;
 }
 
 .pets-header {
-    display: flex;
     text-align: center;
-    justify-content: center;
 }
 
 tr {
-    display: flex !important;
+    /* display: flex !important;
     flex-direction: row !important;
     text-align: center;
-    justify-content: space-between; 
+    justify-content: space-between; */
     text-align: center;
 }
 
