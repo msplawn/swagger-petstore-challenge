@@ -1,33 +1,19 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Pagination } from "semantic-ui-react";
-// import Pages from "./Pages";
 import API from "../utils/API";
 
 function DataBody({ pets, value }) {
     const [className, setClassName] = useState(value);
-    // const [availability, setAvailability] = useState(data);
     const [activePage, setActivePage] = useState(1);
     const [page, setPage] = useState(1)
     const idRef = useRef(null)
 
-    const animals = [
-        "doggie",
-        "fish",
-        "cat",
-        "lion",
-        "tiger",
-        "dragon",
-        "mouse"
-    ];
-
     const handleClick = (pet, i) => {
-        console.log(pet)
         pet.status = "sold"
         API.updatePet(pet)
             // List updated pet
             .then(updatedPet => console.log(updatedPet))
             .catch(err => console.log(err))
-        className === "question circle outline icon" ? console.log("yeeeet") : console.log("nahhhhh")
         value = "check circle icon"
         const icon = document.getElementById(`${pet.id}`)
         icon.setAttribute("class", value)
@@ -36,9 +22,7 @@ function DataBody({ pets, value }) {
     }
 
     const onChange = async (e, pageInfo) => {
-        console.log(pageInfo.activePage)
         await setActivePage(pageInfo.activePage)
-        console.log(activePage)
     };
 
     const getPages = (pets) => {
@@ -46,36 +30,12 @@ function DataBody({ pets, value }) {
         return pages;
     }
 
-    // useEffect(() => {
-    //     // console.log(pets)
-    //     let petArray = []
-    //     pets.forEach(petGroup => {
-    //         // console.log(petGroup)
-    //         const newPet = petGroup.name.toLowerCase();
-    //         petArray.push(newPet);
-
-    //     });
-    //     // console.log(petArray)
-    //     // console.log("yoooooo")
-    // }) 
-
     return (
         <>
             <tbody value={value}>
                 {pets
-                    // .name.toLowerCase()
-                    // .map(pets => pets.name.toLowerCase())
-                    // .filter(({name}) => 
-                    //     name === "doggie" || 
-                    //     name === "fish" ||
-                    //     name === "Cat" ||
-                    //     name === "Lion" ||
-                    //     name === "mouse"
-                    // )
                     .map((pet, i) => {
                         const dataVar = activePage * 10;
-                        // console.log(dataVar)
-                        // console.log(pets.length)
                         while (i > dataVar - 10 && i < dataVar) {
                             return (
                                 <tr key={i}>

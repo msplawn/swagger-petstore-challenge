@@ -16,7 +16,6 @@ export default class DataArea extends Component {
     headings = [
         { name: "ID", width: "33%" },
         { name: "Name", width: "33%" },
-        // { name: "Status", width: "33%" },
         { name: "Status: (Click to mark sold)", width: "33%" }
     ];
 
@@ -25,29 +24,25 @@ export default class DataArea extends Component {
         this.displayAvailablePets();
     };
 
+    // Displays available pets on button click
     displayAvailablePets = () => {
         API.getPets().then(results => {
-            console.log(results.data);
 
             // Filters out duplicate pets
             const petIds = results.data.map(pet => pet.id);
             const uniquePets = results.data.filter((pet, i ) => !petIds.includes(pet.id, i + 1));
-            console.log(uniquePets)
-            // const uniquePetStatus = uniquePets.forEach(pet => {
-            //     console.log(pet.status)
-            //     return pet.status;
-            // })
-            // console.log(uniquePetStatus)
             this.setState({
                 pets: uniquePets,
-                // status: uniquePetStatus
             });
-            // return value
         });
     }
 
+    // Displays sold pets on button click
     displaySoldPets = () => {
         API.getSoldPets().then(soldPets => {
+
+                        // Filters out duplicate pets
+
             const soldPetIds = soldPets.data.map(pet => pet.id);
             const soldUniquePets = soldPets.data.filter((pet, i ) => !soldPetIds.includes(pet.id, i + 1));
             this.setState({pets: soldUniquePets});

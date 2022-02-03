@@ -4,7 +4,6 @@ import DataBody from "./DataBody";
 //Creating DataTable and passing necessary paramaters
 function DataTable({ headings, pets, status, iconStatus }) {
     return (
-        // <div className="datatable">
             <table className="ui celled table">
                 <thead>
                     <tr>
@@ -24,7 +23,6 @@ function DataTable({ headings, pets, status, iconStatus }) {
                 </thead>
                 <DataBody key={pets} pets={pets} value={iconStatus}/>
             </table>
-        // </div>
     );
 };
 
