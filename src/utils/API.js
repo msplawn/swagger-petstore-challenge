@@ -8,9 +8,18 @@ export default {
         return axios.get('https://petstore.swagger.io/v2/pet/findByStatus?status=available')
     },
 
-    // updatePet: (id) => {
-        
-    // }
+    getSoldPets: () => {
+        return axios.get('https://petstore.swagger.io/v2/pet/findByStatus?status=sold')
+    },
+
+    updatePet: (updatedPet) => {
+        const response = axios({
+            method: "PUT",
+            url: 'https://petstore.swagger.io/v2/pet',
+            data: updatedPet
+        })
+        return response;
+    },
 
     // Gets images to display in table
     getCatImages: () => {

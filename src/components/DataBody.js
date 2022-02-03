@@ -3,10 +3,9 @@ import { Pagination } from "semantic-ui-react";
 // import Pages from "./Pages";
 import API from "../utils/API";
 
-function DataBody({ pets, value, data }) {
-    console.log(data)
+function DataBody({ pets, value }) {
     const [className, setClassName] = useState(value);
-    const [availability, setAvailability] = useState(data);
+    // const [availability, setAvailability] = useState(data);
     const [activePage, setActivePage] = useState(1);
     const [page, setPage] = useState(1)
     const idRef = useRef(null)
@@ -21,12 +20,16 @@ function DataBody({ pets, value, data }) {
         "mouse"
     ];
 
-    const handleClick = (i) => {
-        // console.log(this)
+    const handleClick = (pet, i) => {
+        console.log(pet)
+        pet.status = "sold"
+        API.updatePet(pet)
+            // List updated pet
+            .then(updatedPet => console.log(updatedPet))
+            .catch(err => console.log(err))
         className === "question circle outline icon" ? console.log("yeeeet") : console.log("nahhhhh")
-        console.log(i)
         value = "check circle icon"
-        const icon = document.getElementById(`${i}`)
+        const icon = document.getElementById(`${pet.id}`)
         icon.setAttribute("class", value)
         const availabilityValue = "Sold!"
         icon.textContent = `${availabilityValue}`
@@ -69,21 +72,25 @@ function DataBody({ pets, value, data }) {
                     //     name === "Lion" ||
                     //     name === "mouse"
                     // )
-                    .map(({ name, status }, i) => {
+                    .map((pet, i) => {
                         const dataVar = activePage * 10;
-                        console.log(dataVar)
-                        console.log(pets.length)
+                        // console.log(dataVar)
+                        // console.log(pets.length)
                         while (i > dataVar - 10 && i < dataVar) {
                             return (
-                                <tr>
+                                <tr key={i}>
                                     <td>
-                                        <img src={`https://placedog.net/50/50?id=${i + 1}`} />
+                                        {pet.id}
                                     </td>
-                                    <td key={name}>{name}</td>
+                                    <td key={pet.name}>{pet.name}</td>
                                     <td>
-                                        <i id={i} key={i} ref={idRef} className={className} onClick={() => handleClick(i)}>
-                                            {availability}
+                                        {pet.status === "available" ? 
+                                        <i id={pet.id} key={i} ref={idRef} className={className} onClick={() => handleClick(pet, i)}>
+                                            {pet.status}
                                         </i>
+                                        :
+                                        <i>{pet.status}</i>
+                                        }
                                     </td>
                                 </tr>
                             )

@@ -22,7 +22,7 @@ function DataTable({ headings, pets, status, iconStatus }) {
                         })}
                     </tr>
                 </thead>
-                <DataBody key={pets} pets={pets} data={status} value={iconStatus}/>
+                <DataBody key={pets} pets={pets} value={iconStatus}/>
             </table>
         // </div>
     );
