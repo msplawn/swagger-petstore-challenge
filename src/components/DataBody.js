@@ -3,9 +3,8 @@ import { Pagination } from "semantic-ui-react";
 import API from "../utils/API";
 
 function DataBody({ pets, value }) {
-    const [className, setClassName] = useState(value);
     const [activePage, setActivePage] = useState(1);
-    const [page, setPage] = useState(1)
+    // const [page, setPage] = useState(1)
     const idRef = useRef(null)
 
     const handleClick = (pet, i) => {
